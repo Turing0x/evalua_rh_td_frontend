@@ -2,21 +2,21 @@
 import Layout from "../layouts/Layout.astro";
 import InfoSection from "../components/InfoSection.astro";
 
-import type { Area } from "../interfaces/area.interface";
 import { area_data } from "../data/questionnaireData";
 import QuestionnaireSection from "../components/QuestionnaireSection.astro";
+import type { Area } from "../interfaces/area.interface";
 
-const data: Area[] = area_data;
+const problems_solutions: Area = area_data[4];
 ---
 
 <Layout title="Cuestionario de Competencias Digitales">
   <div class="split-layout">
     <InfoSection
-      title={data[0].title}
-      description={data[0].description}
-      image={data[0].image}
+      title={problems_solutions.title}
+      description={problems_solutions.description}
+      image={problems_solutions.image}
     />
-    <QuestionnaireSection section={data[0].sections[0]} />
+    <QuestionnaireSection section={problems_solutions.sections[0]} />
   </div>
 </Layout>
 
