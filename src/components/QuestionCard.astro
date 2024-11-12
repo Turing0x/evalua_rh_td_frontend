@@ -1,0 +1,178 @@
+---
+interface Props {
+  text: string;
+  name: string;
+  description: string;
+  option_type: string;
+  number: number;
+}
+
+const { text, name, description, option_type, number } = Astro.props;
+---
+
+<div class="question-card">
+  <div class="question-header">
+    <div class="flex justify-between">
+      <span class="question-number">Pregunta {number}</span>
+
+      <span id="hover-span"> Saber Más </span>
+    </div>
+    <p id="question-description">{description}</p>
+
+    <h3>{text}</h3>
+  </div>
+  <div class="options">
+    {
+      option_type === "type_1" ? (
+        <div class="radio-group">
+          <label>
+            <input type="radio" name={name} value="1" />
+            <span>Nunca</span>
+          </label>
+          <label>
+            <input type="radio" name={name} value="2" />
+            <span>Raramente</span>
+          </label>
+          <label>
+            <input type="radio" name={name} value="3" />
+            <span>A veces</span>
+          </label>
+          <label>
+            <input type="radio" name={name} value="4" />
+            <span>Frecuentemente</span>
+          </label>
+          <label>
+            <input type="radio" name={name} value="5" />
+            <span>Siempre</span>
+          </label>
+        </div>
+      ) : (
+        <div class="radio-group">
+          <label>
+            <input type="radio" name={name} value="1" />
+            <span>Principiante</span>
+          </label>
+          <label>
+            <input type="radio" name={name} value="2" />
+            <span>Básico</span>
+          </label>
+          <label>
+            <input type="radio" name={name} value="3" />
+            <span>Intermedio</span>
+          </label>
+          <label>
+            <input type="radio" name={name} value="4" />
+            <span>Avanzado</span>
+          </label>
+          <label>
+            <input type="radio" name={name} value="5" />
+            <span>Experto</span>
+          </label>
+        </div>
+      )
+    }
+  </div>
+</div>
+
+<style>
+  .question-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+    margin-bottom: 2rem;
+  }
+
+  .question-header {
+    margin-bottom: 1rem;
+  }
+
+  .question-number {
+    display: inline-block;
+    background: #6366f1;
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+  }
+
+  h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin: 0.5rem 0;
+  }
+
+  #question-description {
+    display: none;
+    color: #4b5563;
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+  }
+
+  .radio-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .radio-group label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+  }
+
+  .radio-group input[type="radio"] {
+    accent-color: #6366f1;
+  }
+
+  .radio-group span {
+    color: #374151;
+    font-size: 0.95rem;
+  }
+
+  #hover-span {
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  #hover-span:hover + .question-description {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  @media (max-width: 768px) {
+    .button-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .hover-span {
+      font-size: 14px;
+    }
+    .hover-image {
+      width: 150px;
+      left: -80px;
+      margin-top: 60px;
+    }
+  }
+</style>
+
+<script>
+  const descs = document.querySelectorAll("#question-description");
+  const knows = document.querySelectorAll("#hover-span");
+
+  knows.forEach((know, index) => {
+    const desc = descs[index] as HTMLParagraphElement;
+
+    (know as HTMLSpanElement).addEventListener("mouseenter", () => {
+      desc.style.display = "block";
+    });
+
+    (know as HTMLSpanElement).addEventListener("mouseleave", () => {
+      desc.style.display = "none";
+    });
+  });
+</script>

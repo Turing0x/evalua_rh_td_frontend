@@ -1,0 +1,54 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  image: string;
+}
+
+const { title, description, image } = Astro.props;
+---
+
+<div class="info-section">
+  <div class="info-content">
+    <h1>{title}</h1>
+    <p class="description">{description}</p>
+  </div>
+</div>
+
+<style>
+  .info-section {
+    background: #4f46e5;
+    color: white;
+    padding: 2rem;
+    position: relative;
+  }
+
+  .info-content {
+    position: sticky;
+    top: 2rem;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: white;
+  }
+
+  .description {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    color: #e0e7ff;
+  }
+
+  @media (max-width: 1024px) {
+    .info-section {
+      min-height: auto;
+    }
+
+    .info-content {
+      position: static;
+    }
+  }
+</style>

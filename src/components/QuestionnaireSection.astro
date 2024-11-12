@@ -1,0 +1,68 @@
+---
+import type { Section } from "../interfaces/area.interface";
+import QuestionCard from "./QuestionCard.astro";
+
+interface Props {
+  section: Section;
+}
+
+const { section } = Astro.props;
+---
+
+<div class="questionnaire-section">
+  <div class="questionnaire-content">
+    <h2>{section.title}</h2>
+    <p class="section-description">{section.description}</p>
+    <form class="questions-form">
+      {
+        section.questions.map((question, index) => (
+          <QuestionCard {...question} number={index + 1} />
+        ))
+      }
+      <button type="submit" class="submit-btn">Enviar respuestas</button>
+    </form>
+  </div>
+</div>
+
+<style>
+  .questionnaire-section {
+    padding: 2rem;
+    background: #f3f4f6;
+  }
+
+  h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 1rem;
+  }
+
+  .section-description {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+    color: #4b5563;
+  }
+
+  .questions-form {
+    max-width: 800px;
+  }
+
+  .submit-btn {
+    background: #4f46e5;
+    color: white;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    width: 100%;
+    margin-top: 2rem;
+  }
+
+  .submit-btn:hover {
+    background: #4338ca;
+  }
+</style>
