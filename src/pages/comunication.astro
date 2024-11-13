@@ -14,9 +14,8 @@ const comunication: Area = area_data[1];
     <InfoSection
       title={comunication.title}
       description={comunication.description}
-      image={comunication.image}
     />
-    <QuestionnaireSection section={comunication.sections[0]} />
+    <QuestionnaireSection section={comunication.sections[0]} prev="/information" next="/content" />
   </div>
 </Layout>
 

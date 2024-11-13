@@ -26,24 +26,24 @@ const { text, name, description, option_type, number } = Astro.props;
       option_type === "type_1" ? (
         <div class="radio-group">
           <label>
-            <input type="radio" name={name} value="1" />
-            <span>Nunca</span>
+            <input class="w-4 h-4 text-primary" type="radio" name={name} value="1" />
+            <span class="text-gray-700">Nunca</span>
           </label>
           <label>
-            <input type="radio" name={name} value="2" />
-            <span>Raramente</span>
+            <input class="w-4 h-4 text-primary" type="radio" name={name} value="2" />
+            <span class="text-gray-700">Raramente</span>
           </label>
           <label>
-            <input type="radio" name={name} value="3" />
-            <span>A veces</span>
+            <input class="w-4 h-4 text-primary" type="radio" name={name} value="3" />
+            <span class="text-gray-700">A veces</span>
           </label>
           <label>
-            <input type="radio" name={name} value="4" />
-            <span>Frecuentemente</span>
+            <input class="w-4 h-4 text-primary" type="radio" name={name} value="4" />
+            <span class="text-gray-700">Frecuentemente</span>
           </label>
           <label>
-            <input type="radio" name={name} value="5" />
-            <span>Siempre</span>
+            <input class="w-4 h-4 text-primary" type="radio" name={name} value="5" />
+            <span class="text-gray-700">Siempre</span>
           </label>
         </div>
       ) : (
