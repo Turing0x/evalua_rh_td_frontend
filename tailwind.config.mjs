@@ -9,8 +9,15 @@ export default {
       colors: {
         primary: '#2563eb',
         secondary: '#475569',
-      }
+        red: '#ef4444',
+      },
+      container: {
+        center: true,
+        padding: '1rem',
+      },
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/typography'),
+  ],
 };

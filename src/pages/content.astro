@@ -1,34 +1,13 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import InfoSection from "../components/InfoSection.astro";
-
 import { area_data } from "../data/questionnaireData";
-import QuestionnaireSection from "../components/QuestionnaireSection.astro";
 import type { Area } from "../interfaces/area.interface";
+import AssessmentForm from "../components/AssessmentForm";
 
 const content: Area = area_data[2];
 ---
 
 <Layout title="Cuestionario de Competencias Digitales">
-  <div class="split-layout">
-    <InfoSection
-      title={content.title}
-      description={content.description}
-    />
-    <QuestionnaireSection section={content.sections[0]} prev="/comunication" next="/security" />
-  </div>
+  <AssessmentForm client:load area={content} prev="/content" next="/security" />
 </Layout>
 
-<style>
-  .split-layout {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    min-height: 100vh;
-  }
-
-  @media (max-width: 1024px) {
-    .split-layout {
-      grid-template-columns: 1fr;
-    }
-  }
-</style>
